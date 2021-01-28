@@ -1,0 +1,18 @@
+package com.aproject.sample.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.aproject.sample.service.SampleService;
+
+@Service("sampleService")
+public class SampleServiceImpl implements SampleService{
+
+	@Override
+	public List<Map<String, Object>> selectTestList(Map<String, Object> map) {
+		return sampleDAO.selectTestList(map);
+	}
+	
+}

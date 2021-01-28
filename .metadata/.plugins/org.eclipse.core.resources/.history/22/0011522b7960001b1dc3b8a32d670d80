@@ -1,0 +1,5 @@
+package com.aproject.common.dao;
+
+public class AbstractDAO {
+
+}
