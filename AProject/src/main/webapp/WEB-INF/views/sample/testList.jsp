@@ -15,6 +15,7 @@
 전화번호 : ${row.phone }
 이메일 : ${row.email }
 등록일 : ${row.regDate }
+!!
 </c:forEach>
 </body>
 </html>
