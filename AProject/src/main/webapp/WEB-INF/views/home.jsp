@@ -11,6 +11,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<a href="/test/testList.do">테스트</a>
+<a href="/test/testList.do">테스트11</a>
 </body>
 </html>
