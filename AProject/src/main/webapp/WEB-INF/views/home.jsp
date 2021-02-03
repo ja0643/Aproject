@@ -7,10 +7,9 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	<img src="/resources/img/logo/logo.png">
 </h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-<a href="/test/testList.do">테스트1111</a>
+<a href="/test/testList.do">테스트목록으로 이동</a>
 </body>
 </html>
+
