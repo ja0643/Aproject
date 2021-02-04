@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/***LAYOUT***/
+#wrap{position: relative; width: 100%; height: 100%;}
+#header {position:relative; width:100%; height:190px; min-width:1200px; background:#fff; z-index:10}
+.header_block {position:relative; width:1200px; min-width:1200px; margin:auto }
+
+
+/***HEADER***/
+.logo {position:absolute; top:85px; left:0}
+h1.tit_logo{width: 155px;}
+h1.tit_logo img {width:100%; vertical-align:top}
+
+
+ul.gnb_nav {position:absolute;  top:60px; left:182px; width:auto; height:104px}
+ul.gnb_nav li {float:left; height:104px; line-height:110px; padding:0 14px 0 13px; font-size:18px; color:#777}
+ul.gnb_nav li:hover {color:#222}
+ul.gnb_nav li.nav>a.on {display:block; height:90px; color:#222}
+ul.gnb_nav li.nav>a {display:block; font-family:'Noto_m'}
+
+.top_block{position:absolute; top:0; width:100%; height:60px; background:#ffc72c} 
+ul.top_nav {position:absolute;top:15px; right:0; }
+ul.top_nav li {float:left; height:30px; line-height:30px; margin-left:20px; font-size:13px}
+ul.top_nav li:first-child {margin-left:0}
+ul.top_nav li a:hover {text-decoration:underline}
+

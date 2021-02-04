@@ -1,0 +1,58 @@
+@charset "utf-8";
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button,  figure, figcaption {margin:0; padding:0; font-weight:normal}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+img {border:0 }
+ul, ol {list-style:none} 
+fieldset {border:none}
+a {color:inherit; text-decoration:none} 
+a:hover, a:active {text-decoration:none}
+em {font-style:normal; font-weight:normal}
+strong {font-weight:normal; font-family:'Noto_m'}
+textarea {resize:none; font-family:'Noto_r'; font-size:15px}
+table {border-spacing:0; border-collapse:collapse; box-sizing:border-box}
+caption {width:0; height:0; font-size:0; line-height:0; visibility:hidden; overflow:hidden}
+legend {position:absolute;border:0; width:1px; height:1px; margin:-1px; overflow:hidden; padding:0; clip:rect(0 0 0 0)}
+button {cursor:pointer; overflow:visible; border:0 none; font-family: 'Noto_r'; font-weight:normal;font-size:15px; color:#555; text-indent:0}
+button span {position: absolute; border: none; clip: rect(0 0 0 0); height: 1px !important; margin: -1px; overflow: hidden; padding: 0;  width: 1px}
+html, body {position:relative; height:100%; font-family:'Noto_r'; font-size:15px; word-break: break-all; color:#555}
+html {overflow-y:auto;min-width:1200px; width:100%}
+select,
+input {-webkit-appearance:none; -moz-appearance: none; appearance: none; font-family: 'Noto_r'; font-size:15px }
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {display:none; -webkit-appearance: none; margin:0}
+select::-ms-expand {display:none}
+input::-ms-expand {display:none}
+input::-ms-clear {display:none}
+input::-moz-clear {display:none}
+
+
+/* FONT */
+@font-face {
+  font-family:'Noto_m';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./font/NotoSansCJKkr-Medium.eot);
+  src: url(./font/NotoSansCJKkr-Medium.eot?#iefix) format('embedded-opentype'),
+       url(./font/NotoSansCJKkr-Medium.woff) format('woff'),
+       url(./font/NotoSansCJKkr-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family:'Noto_r';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./font/NotoSansCJKkr-Regular.eot);
+  src: url(./font/NotoSansCJKkr-Regular.eot?#iefix) format('embedded-opentype'),
+       url(./font/NotoSansCJKkr-Regular.woff) format('woff'),
+       url(./font/NotoSansCJKkr-Regular.ttf) format('truetype');
+} 
+
+@font-face {
+  font-family:'Noto_l';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./font/NotoSansCJKkr-Light.eot);
+  src: url(./font/NotoSansCJKkr-Light.eot?#iefix) format('embedded-opentype'),
+       url(./font/NotoSansCJKkr-Light.woff) format('woff'),
+       url(./font/NotoSansCJKkr-Light.ttf) format('truetype');
+}

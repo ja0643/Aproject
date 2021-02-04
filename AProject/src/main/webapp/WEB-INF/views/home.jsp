@@ -6,9 +6,11 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	<img src="/resources/img/logo/logo.png">
-</h1>
+<div id="wrap">
+	<%@ include file="layout/top.jsp"%>
+
+</div>
+
 <a href="/test/testList.do">테스트목록으로 이동</a>
 </body>
 </html>
