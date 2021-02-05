@@ -1,4 +1,4 @@
-package com.aproject.common.dao;
+package com.atour.common.dao;
 
 import java.util.List;
 

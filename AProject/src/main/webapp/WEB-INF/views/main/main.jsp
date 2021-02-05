@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <section class="tm-banner">
     <div class="tm-container-outer tm-banner-bg">
@@ -18,7 +20,7 @@
                 <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
                     <div class="form-row tm-search-form-row">                                
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                            <label for="inputCity">Choose Your Destination</label>
+                            <label for="inputCity">여행지</label>
                             <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Type your destination...">
                         </div>
                         <div class="form-group tm-form-group tm-form-group-1">                                    

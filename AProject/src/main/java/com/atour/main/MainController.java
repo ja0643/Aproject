@@ -1,4 +1,4 @@
-package com.aproject.sample;
+package com.atour.main;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aproject.sample.service.SampleService;
+import com.atour.main.service.MainService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class MainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@Resource(name="sampleService")
-	private SampleService sampleService;
+	@Resource(name="mainService")
+	private MainService mainService;
 
 	
 	/**
@@ -47,16 +47,16 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/test/testList.do")
-	public ModelAndView testList(Map<String, Object> commandMap) throws Exception{
-
-		ModelAndView mv = new ModelAndView("/sample/testList");
-		
-		List<Map<String, Object>> list = sampleService.selectTestList(commandMap);
-		
-		mv.addObject("list", list);
-		
-		return mv;
-	}
+//	@RequestMapping(value = "/test/testList.do")
+//	public ModelAndView testList(Map<String, Object> commandMap) throws Exception{
+//
+//		ModelAndView mv = new ModelAndView("/sample/testList");
+//		
+//		List<Map<String, Object>> list = sampleService.selectTestList(commandMap);
+//		
+//		mv.addObject("list", list);
+//		
+//		return mv;
+//	}
 	
 }
