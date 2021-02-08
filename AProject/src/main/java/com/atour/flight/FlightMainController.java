@@ -1,4 +1,4 @@
-package com.atour.main;
+package com.atour.flight;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -16,24 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.atour.main.service.MainService;
+import com.atour.flight.service.FlightMainService;
+
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class MainController {
+public class FlightMainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FlightMainController.class);
 	
-	@Resource(name="mainService")
-	private MainService mainService;
+	@Resource(name="flightMainService")
+	private FlightMainService flightMainService;
 
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/main/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/flight/main.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -44,7 +45,7 @@ public class MainController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main/main";
+		return "flight/main";
 	}
 	
 //	@RequestMapping(value = "/test/testList.do")

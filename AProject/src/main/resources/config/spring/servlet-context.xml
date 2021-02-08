@@ -22,7 +22,7 @@
 	</beans:bean>
 	
 <!-- 	<context:component-scan base-package="com.aproject.sample" /> -->
-	<context:component-scan base-package="com.atour.main" />
+	<context:component-scan base-package="com.atour" />
 	
 	
 	

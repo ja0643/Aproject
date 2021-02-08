@@ -2,7 +2,7 @@
 <% response.setHeader("Set-Cookie", "JSESSIONID=" + request.getSession().getId() + "; HttpOnly"); %>
 <%
 String browser = request.getHeader("User-Agent");
-String nextUrl = "/main/main.do";
+String nextUrl = "/flight/main.do";
 
 if (!request.getContextPath().equals("") && !request.getContextPath().equals("/")) {
 	nextUrl = request.getContextPath() + nextUrl;

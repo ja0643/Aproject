@@ -14,14 +14,40 @@
 <link rel="stylesheet" href="/resources/css/common.css" />
 <link rel="stylesheet" href="/resources/css/main.css" />
 
+<!-- load JS files -->
+<script src="/resources/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+<script src="/resources/js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
+<script src="/resources/js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
+<script src="/resources/js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
+<script src="/resources/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+<script src="/resources/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+<script src="/resources/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+
+function goMenu(url){
+	
+	if(url == '' || url == null){
+		alert("준비중입니다.");
+	}else{
+		location.href= url;
+	}
+	
+}
+
+</script>
+
 <div class="tm-top-bar-bg"></div>    
     <div class="tm-top-bar" id="tm-top-bar">
     	<div class="top_block">
 			<div class="header_block">
 				<div class="top_block">
 					<ul class="top_nav">
-						<li><a href="">로그인</a></li>
-						<li><a href="">회원가입</a></li>
+						<li><a onclick="goMenu('/login/login.do');" href="javascript:void(0);">로그인</a></li>
+						<li><a onclick="goMenu('/join/join.do');" href="javascript:void(0);">회원가입</a></li>
 					</ul>
 				</div>
 			</div>
@@ -39,16 +65,16 @@
                     <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
                         <ul class="navbar-nav ml-auto">
                           <li class="nav-item">
-                            <a class="nav-link active" href="#top">항공 <span class="sr-only">(current)</span></a>
+                            <a class="nav-link active" onclick="goMenu('/flight/main.do');" href="javascript:void(0);">항공</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tm-section-2">호텔</a>
+                            <a class="nav-link" onclick="goMenu('/hotel/main.do');" href="javascript:void(0);">호텔</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tm-section-3">투어+액티비티</a>
+                            <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">투어+액티비티</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tm-section-4">렌터카</a>
+                            <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">렌터카</a>
                         </li>
                     </ul>
                 </div>                            
@@ -56,3 +82,4 @@
         </div> <!-- row -->
     </div> <!-- container -->
 </div> <!-- .tm-top-bar -->
+
