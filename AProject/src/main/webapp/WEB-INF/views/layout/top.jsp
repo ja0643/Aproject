@@ -48,6 +48,7 @@ function goMenu(url){
 					<ul class="top_nav">
 						<li><a onclick="goMenu('/login/login.do');" href="javascript:void(0);">로그인</a></li>
 						<li><a onclick="goMenu('/join/join.do');" href="javascript:void(0);">회원가입</a></li>
+						<li><a onclick="goMenu('');" href="javascript:void(0);">예약/확인결제</a></li>
 					</ul>
 				</div>
 			</div>
@@ -75,6 +76,9 @@ function goMenu(url){
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">렌터카</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">고객센터</a>
                         </li>
                     </ul>
                 </div>                            

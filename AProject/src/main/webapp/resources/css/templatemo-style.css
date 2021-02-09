@@ -47,13 +47,15 @@ p:last-child { margin-bottom: 0; }
 .tm-bg-highlight { background: #c66995; }
 
 .btn-primary {
-    background: #69c6ba;
+    background: #ffc72c;
+/*     background: #69c6ba; */
     border: none;
     border-radius: 0;
     outline: none;
 }
 
-.btn-primary:hover { background: #c66995; }
+/* .btn-primary:hover { background: #c66995; } */
+.btn-primary:hover { background: #6A3D31; }
 .tm-top-bar .navbar-expand-lg .navbar-nav .nav-link { padding: 39px 35px; }
 
 .tm-top-bar {
@@ -118,7 +120,8 @@ p:last-child { margin-bottom: 0; }
 }
 .tm-banner-subtitle {
     font-size: 1.5rem;
-    margin-top: 10px;
+/*     margin-top: 10px; */
+    margin: 10px 0;
     letter-spacing: 1px;
 }
 
@@ -147,7 +150,8 @@ p:last-child { margin-bottom: 0; }
 .tm-banner-row-header { text-align: center; }
 .tm-down-arrow-link { 
     color: white;
-    background-color: #69c6ba;
+/*     background-color: #69c6ba; */
+    background-color: #ffc72c;
     border-radius: 50%;
     padding: 10px 15px;
     margin-top: 0px;
@@ -157,7 +161,8 @@ p:last-child { margin-bottom: 0; }
 .tm-down-arrow-link:hover,
 .tm-down-arrow-link:focus {
     color: white;
-    background-color: #c66995;
+/*     background-color: #c66995; */
+    background-color: #6A3D31;
 }
 
 /* Search form */
@@ -176,10 +181,18 @@ label { font-weight: 700; }
     margin-right: 15px;
 }
 
+label.tit{
+	display: block;
+    padding: 0 8px;
+    
+}
+
 .tm-form-group { float: left; }
 .tm-form-group-pad { padding: 0 8px; }
 .tm-form-group-1 { width: 50%; }
 .tm-form-group-2 { width: 50%; }
+.tm-form-group-2-1 { width: 47%; }
+.tm-form-group-2-2 { width: 2%; padding:0; line-height: 45px;}
 .tm-form-group-3 { width: 25%; }
 .form-control { border-radius: 0; }
 
@@ -214,7 +227,8 @@ label { font-weight: 700; }
 .tm-btn-search:hover,
 .tm-btn-search:active,
 .tm-btn-search:focus {
-    background: #c66995;
+/*     background: #c66995; */
+    background: #6A3D31;
 }
 
 .tm-bg-gray { background-color: #efefef; }
@@ -471,12 +485,16 @@ footer p { color: white; }
 
 .form-control {
     background-color: #f5f5f5;
-    border: none;
+/*     border: none; */
+	border: 1px solid #EBEBEB;
+    height: 45px;
 }
 
 .form-control:focus {
-    border-color: #69c6ba;
-    box-shadow: 0 0 0 0.1rem #69c6babf;
+/*     border-color: #69c6ba; */
+    border-color: #ffc72c;
+/*     box-shadow: 0 0 0 0.1rem #69c6babf; */
+    box-shadow: 0 0 0 0.1rem #ffc72c;
 }
 
 .tm-name-container,
