@@ -30,7 +30,7 @@
 		                <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
 		                    <div class="form-row tm-search-form-row">                                
 		                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-		                        <label for="inputCity" class="tit">여행지</label>
+		                        	<label for="inputCity" class="tit">여행지</label>
 		                        	<div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-1"> 
 			                            <input name="start_place" type="text" class="form-control" id="start_place" placeholder="출발지">
 		                            </div>
@@ -92,7 +92,7 @@
 		                            	~ 
 		                            </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-1"> 
-		                            <input name="end_date" type="text" class="form-control" id="end_date" placeholder="날짜선택">
+		                            	<input name="end_date" type="text" class="form-control" id="end_date" placeholder="날짜선택">
 		                            </div>
 		                        </div>
 <!-- 		                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3"> -->

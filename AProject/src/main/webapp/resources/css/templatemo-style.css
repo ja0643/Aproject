@@ -32,7 +32,9 @@ p:last-child { margin-bottom: 0; }
 
 .tm-container-outer {
     max-width: 1400px;
-    margin: 0 auto;    
+/*     margin: 0 auto;     */
+    margin: 100px auto 0;
+    text-align: center;
 }
 
 .tm-content-box { box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); }
@@ -323,20 +325,21 @@ label.tit{
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
+/*     display: flex; */
+	display: inline-block;
     -webkit-box-align: stretch;
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch;
-    -webkit-box-pack: space-evenly;
-    -webkit-justify-content: space-evenly;
-    -ms-flex-pack: space-evenly;
-    justify-content: space-evenly;
-    background: #69c6ba;
+/*     -webkit-box-pack: space-evenly; */
+/*     -webkit-justify-content: space-evenly; */
+/*     -ms-flex-pack: space-evenly; */
+/*     justify-content: space-evenly; */
+/*     background: #69c6ba; */
 }
 
 .tm-tab-link {
-    padding: 30px 25px;
+/*     padding: 30px 25px; */
     text-align: center;
     display: -webkit-box;
     display: -webkit-flex;
@@ -356,26 +359,37 @@ label.tit{
     -ms-flex-pack: center;
     justify-content: center;
     text-transform: uppercase;
-    color: white;
+/*     color: white; */
     font-weight: 400;
     font-size: 0.9rem;
-    height: 100%;
+/*     height: 100%; */
+	height: 60px;
+    min-width: 110px;
+    padding: 0 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 8%);
+    font-weight: 700;
 }
 
 .tm-tab-link:hover { color: white; }
 
 .tm-tab-link-li {
+	float: left;
     background: transparent;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    transition: all 0.3s ease;    
+/*     -webkit-box-flex: 1; */
+/*     -webkit-flex: 1 1 auto; */
+/*     -ms-flex: 1 1 auto; */
+/*     flex: 1 1 auto; */
+    transition: all 0.3s ease;   
+    margin-left: 10px; 
 }
 
 .tm-tab-link:hover,
 .tm-tab-link.active {
-    background: #c66995;
+/*     background: #c66995; */
+	background: #ffc72c;
+	color: white;
 }
 
 .tab-pane {
