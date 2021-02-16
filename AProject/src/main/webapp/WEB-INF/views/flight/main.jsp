@@ -12,7 +12,7 @@
 	<div class="tm-page-wrap mx-auto">
 		
 		<section class="tm-banner">
-		    <div class="tm-container-outer tm-banner-bg">
+		    <div class="tm-container-outer tm-banner-bg1">
 		        <div class="container">
 		
 		            <div class="row tm-banner-row tm-banner-row-header">
@@ -43,7 +43,7 @@
 		                        </div>
 		                        <div class="form-group tm-form-group tm-form-group-1">                                    
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">                                       
-		                                <label for="inputAdult">성인</label>     
+		                                <label for="inputAdult" class="tit">성인</label>     
 		                                <select name="adult" class="form-control tm-select" id="inputAdult">
 		                                    <option value="1" selected>1</option>
 		                                    <option value="2">2</option>
@@ -58,7 +58,7 @@
 		                            </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
 		
-		                                <label for="inputChildren">소아</label>                                            
+		                                <label for="inputChildren" class="tit">소아</label>                                            
 		                                <select name="children" class="form-control tm-select" id="inputChildren">
 		                                	<option value="0" selected>0</option>
 		                                    <option value="1">1</option>
@@ -74,7 +74,7 @@
 		                            </div>
 		                            
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-		                                <label for="inputRoom">좌석등급</label>
+		                                <label for="inputRoom" class="tit">좌석등급</label>
 		                                <select name="rank" class="form-control tm-select" id="rank">
 		                                    <option value="1" selected>일반석</option>
 		                                </select>                                        

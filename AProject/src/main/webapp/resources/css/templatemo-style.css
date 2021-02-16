@@ -138,8 +138,17 @@ p:last-child { margin-bottom: 0; }
     left: 0px;
     background: rgba(0, 0, 0, 0.7);
 }
-.tm-banner-bg {
-    background: url(../img/banner.jpg) center top no-repeat;    
+.tm-banner-bg1 {
+/*     background: url(../img/banner.jpg) center top no-repeat;     */
+    background: url(../img/plane.jpg) center top no-repeat;    
+    background-size: 100%;
+    min-height: 720px;
+    position: relative;
+}
+.tm-banner-bg2 {
+/*     background: url(../img/banner.jpg) center top no-repeat;     */
+    background: url(../img/hotel.jpg) center top no-repeat;    
+    background-size: 100%;
     min-height: 720px;
     position: relative;
 }
@@ -186,7 +195,7 @@ label { font-weight: 700; }
 label.tit{
 	display: block;
     padding: 0 8px;
-    
+    text-align: left;
 }
 
 .tm-form-group { float: left; }

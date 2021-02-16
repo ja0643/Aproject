@@ -12,7 +12,7 @@
 	<div class="tm-page-wrap mx-auto">
 		
 		<section class="tm-banner">
-		    <div class="tm-container-outer tm-banner-bg">
+		    <div class="tm-container-outer tm-banner-bg2">
 		        <div class="container">
 		
 		            <div class="row tm-banner-row tm-banner-row-header">
@@ -30,7 +30,7 @@
 		                <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
 		                    <div class="form-row tm-search-form-row">                                
 		                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-		                            <label for="inputCity">목적지</label>
+		                            <label for="inputCity" class="tit">목적지</label>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-1"> 
 			                            <input name="start_place" type="text" class="form-control" id="start_place" placeholder="출발지">
 		                            </div>
@@ -43,7 +43,7 @@
 		                        </div>
 		                        <div class="form-group tm-form-group tm-form-group-1">                                    
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-		                                <label for="inputRoom">객실</label>
+		                                <label for="inputRoom" class="tit">객실</label>
 		                                <select name="room" class="form-control tm-select" id="inputRoom">
 		                                    <option value="1" selected>1 Room</option>
 		                                    <option value="2">2 Rooms</option>
@@ -58,7 +58,7 @@
 		                                </select>                                        
 		                            </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">                                       
-		                                <label for="inputAdult">성인</label>     
+		                                <label for="inputAdult" class="tit">성인</label>     
 		                                <select name="adult" class="form-control tm-select" id="inputAdult">
 		                                    <option value="1" selected>1</option>
 		                                    <option value="2">2</option>
@@ -74,7 +74,7 @@
 		                            </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
 		
-		                                <label for="inputChildren">소아</label>                                            
+		                                <label for="inputChildren" class="tit">소아</label>                                            
 		                                <select name="children" class="form-control tm-select" id="inputChildren">
 		                                	<option value="0" selected>0</option>
 		                                    <option value="1">1</option>
@@ -104,10 +104,8 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-			                            <label for="btnSubmit">&nbsp;</label>
-			                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">항공권 검색</button>
-			                        </div>
+		                            <label for="btnSubmit">&nbsp;</label>
+		                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">항공권 검색</button>
 		                        </div>
 		                    </div>                              
 		                </form>                             
