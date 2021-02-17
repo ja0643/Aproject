@@ -32,8 +32,8 @@ p:last-child { margin-bottom: 0; }
 
 .tm-container-outer {
     max-width: 1400px;
-/*     margin: 0 auto;     */
-    margin: 100px auto 0;
+    margin: 0 auto;    
+/*     margin: 100px auto 0; */
     text-align: center;
 }
 
@@ -136,7 +136,7 @@ p:last-child { margin-bottom: 0; }
     overflow: auto;
     top: 0px;
     left: 0px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
 }
 .tm-banner-bg1 {
 /*     background: url(../img/banner.jpg) center top no-repeat;     */
@@ -277,6 +277,7 @@ label.tit{
     width: 48%;
     z-index: 100;
     margin-left: -42px;
+    text-align: left;
 }
 
 .tm-slideshow-description-left {

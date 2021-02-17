@@ -25,34 +25,141 @@ input::-ms-expand {display:none}
 input::-ms-clear {display:none}
 input::-moz-clear {display:none}
 
+#container {
+    position: relative;
+    background: #fff;
+}
+.page_navigation {
+    width: 1200px;
+    height: 50px;
+    margin: auto;
+    text-align: right;
+}
+ul.page_nav li:first-child {
+    padding-left: 0;
+    margin-left: 0;
+    background: none;
+}
+ul.page_nav li {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+.content_block {
+    position: relative;
+    min-height: 800px;
+    width: 1200px;
+/*     padding-bottom: 100px; */
+    padding: 60px 0;
+    margin: auto;
+}
+
+/* LNB */
+.content_block>.lnb_block {
+    width: 240px;
+    padding: 30px 0 16px 0;
+    box-sizing: border-box;
+    border: 1px solid #222;
+    float: left;
+    background: #fff;
+    z-index: 10;
+}
+.tit_lnb_title {
+    line-height: 1;
+    margin-bottom: 7px;
+    padding: 0 30px 22px 30px;
+    background: #fff url(/static/images/content/bl/bl_lnb_line.png) no-repeat 30px 100%;
+    font-size: 26px;
+    font-family: 'Noto_m';
+    color: #222;
+}
+ul.lnb_nav li {
+    font-size: 16px;
+    color: #222;
+}
+ul.lnb_nav li a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+}
+ul.lnb_nav li.lnb_menu.active {
+    background: #f3f3f3;
+    color: #222;
+}
+
+.content {
+    float: right;
+    width: 910px;
+    min-height: 600px;
+}
+.content>.tit_con_title {
+    padding: 10px 0 20px 0;
+    border-bottom: 2px solid #222;
+}
+.tit_con_title {
+    margin-bottom: 20px;
+    line-height: 1;
+    font-size: 32px;
+    font-family: 'Noto_m';
+    color: #222;
+}
+
+
+/* TABLE */
+.table thead th{text-align: center;}
+.t_left{text-align: left;}
+.t_center{text-align: center;}
+
+.search{padding: 20px 0;}
+.sch_select{
+    width: 60px;
+    height: calc(1.8em + .5rem + 2px);
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+.form-control-sm{
+	height: calc(1.8em + .5rem + 2px);
+    padding: .375rem .75rem;
+}
+.sch_btn{
+	vertical-align: baseline;
+}
 
 /* FONT */
 @font-face {
   font-family:'Noto_m';
   font-style: normal;
   font-weight: normal;
-  src: url(./font/NotoSansCJKkr-Medium.eot);
-  src: url(./font/NotoSansCJKkr-Medium.eot?#iefix) format('embedded-opentype'),
-       url(./font/NotoSansCJKkr-Medium.woff) format('woff'),
-       url(./font/NotoSansCJKkr-Medium.ttf) format('truetype');
+  src: url(font/NotoSansCJKkr-Medium.eot);
+  src: url(font/NotoSansCJKkr-Medium.eot?#iefix) format('embedded-opentype'),
+       url(font/NotoSansCJKkr-Medium.woff) format('woff'),
+       url(font/NotoSansCJKkr-Medium.ttf) format('truetype');
 }
 
 @font-face {
   font-family:'Noto_r';
   font-style: normal;
   font-weight: normal;
-  src: url(./font/NotoSansCJKkr-Regular.eot);
-  src: url(./font/NotoSansCJKkr-Regular.eot?#iefix) format('embedded-opentype'),
-       url(./font/NotoSansCJKkr-Regular.woff) format('woff'),
-       url(./font/NotoSansCJKkr-Regular.ttf) format('truetype');
+  src: url(font/NotoSansCJKkr-Regular.eot);
+  src: url(font/NotoSansCJKkr-Regular.eot?#iefix) format('embedded-opentype'),
+       url(font/NotoSansCJKkr-Regular.woff) format('woff'),
+       url(font/NotoSansCJKkr-Regular.ttf) format('truetype');
 } 
 
 @font-face {
   font-family:'Noto_l';
   font-style: normal;
   font-weight: normal;
-  src: url(./font/NotoSansCJKkr-Light.eot);
-  src: url(./font/NotoSansCJKkr-Light.eot?#iefix) format('embedded-opentype'),
-       url(./font/NotoSansCJKkr-Light.woff) format('woff'),
-       url(./font/NotoSansCJKkr-Light.ttf) format('truetype');
+  src: url(font/NotoSansCJKkr-Light.eot);
+  src: url(font/NotoSansCJKkr-Light.eot?#iefix) format('embedded-opentype'),
+       url(font/NotoSansCJKkr-Light.woff) format('woff'),
+       url(font/NotoSansCJKkr-Light.ttf) format('truetype');
 }

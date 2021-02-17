@@ -57,7 +57,7 @@ function goMenu(url){
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand-lg narbar-light">
-                    <a class="navbar-brand mr-auto" href="#">
+                    <a class="navbar-brand mr-auto" onclick="goMenu('/flight/main.do');">
                         <img src="/resources/img/logo/logo.png" alt="Site logo">
                     </a>
                     <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@ function goMenu(url){
                             <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">렌터카</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">고객센터</a>
+                            <a class="nav-link" onclick="goMenu('/cs/noticeList.do');" href="javascript:void(0);">고객센터</a>
                         </li>
                     </ul>
                 </div>                            
