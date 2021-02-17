@@ -1,5 +1,6 @@
 package com.atour.cs.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,25 @@ public class CsServiceImpl implements CsService{
 	@Override
 	public List<Map<String, Object>> selectNoticeList(CsVO csVO) throws Exception{
 		return csDAO.selectNoticeList(csVO);
+	}
+
+	@Override
+	public Map<String,Object> selectNoticeView(CsVO csVO) throws Exception {
+		
+		Map<String,Object> resultView = new HashMap<String,Object>();
+		
+		csDAO.updateNoticeHits(csVO);
+		
+		resultView = csDAO.selectNoticeView(csVO);
+		
+		
+		return resultView;
+	}
+
+	@Override
+	public void updateNoticeHits(CsVO csVO) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

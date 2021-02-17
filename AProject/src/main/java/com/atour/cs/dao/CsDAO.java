@@ -15,4 +15,13 @@ public class CsDAO extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("cs.selectNoticeList", csVO);
 	}
 
+	public Map<String, Object> selectNoticeView(CsVO csVO) {
+		return (Map<String, Object>) selectOne("cs.selectNoticeView", csVO);
+	}
+
+	public void updateNoticeHits(CsVO csVO) {
+		update("cs.updateNoticeHits", csVO);
+		
+	}
+
 }

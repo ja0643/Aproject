@@ -9,5 +9,9 @@ public interface CsService {
 
 	List<Map<String, Object>> selectNoticeList(CsVO csVO) throws Exception;
 
+	Map<String, Object> selectNoticeView(CsVO csVO) throws Exception;
+
+	void updateNoticeHits(CsVO csVO) throws Exception;
+
 
 }

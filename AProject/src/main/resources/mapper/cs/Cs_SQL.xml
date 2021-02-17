@@ -53,6 +53,35 @@
 		ORDER BY rownum DESC
 		
 	</select>
+	
+	<select id="selectNoticeView" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT 
+			seq as seq
+			, parent_seq as parentSeq
+			, category as category
+			, title as title
+			, contents as contents
+			, writer as writer
+			, date_format(write_date,'%Y-%m-%d') as writeDate
+			, hits as hits
+			, reply_yn as replyYn
+			, del_yn as delYn
+		FROM tb_board
+		WHERE category = #{category}
+		AND seq = #{seq}
+		
+	</select>
+	
+	<update id="updateNoticeHits" parameterType="CsVO">
+		
+		UPDATE tb_board
+		SET hits = hits+1
+		WHERE 1=1
+		AND seq = #{seq}
+		
+		
+	</update>
 
 </mapper>
 

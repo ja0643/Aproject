@@ -35,7 +35,9 @@ function search(){
     });
 }
 
-
+function goList(){
+	location.href="/cs/noticeList.do";
+}
 </script>
 
 </head>
@@ -67,50 +69,41 @@ function search(){
 			<div class="content" id="content">
 		
 		    	<h3 class="tit_con_title">공지사항</h3>
+			
+				<table class="table view">
+					<colgroup>
+						<col width="20%"/>
+						<col width="30%"/>
+						<col width="20%"/>
+						<col width="30%"/>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>제목</th>
+							<td colspan="3">${vo.title}</td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td colspan="3">${vo.writer}</td>
+						</tr>
+						<tr>
+							<th>작성날짜</th>
+							<td>${vo.writeDate}</td>
+							<th>조회수</th>
+							<td>${vo.hits}</td>
+						</tr>
+						<tr style="height:150px;">
+							<th>내용</th>
+							<td colspan="3">${vo.contents}</td>
+						</tr>
+						
+					</tbody>
+				</table>    	
+				<div class="pull-right">
+					<button type="submit" class="btn btn-primary">작성</button>
+					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
+				</div>
 		    	
-		    	<form action="/cs/noticeList.do" method="post" name="form" id="form">
-		    	
-		    	<div class="search pull-right">
-		    		<select name="searchCondition" id="searchCondition" class="sch_select">
-		    			<option value="all">전체</option>
-		    			<option value="title">제목</option>
-		    			<option value="contents">내용</option>
-		    		</select>
-	    			<input type="text" class="form-control-sm" placeholder="검색어를 입력하세요" name="searchWrd" id="searchWrd" title="검색어" value="">
-		    		<button type="button" class="btn btn-dark sch_btn" onclick="search();">검색</button>
-		    	</div>
-		    	
-		    	</form>
-		    	
-		    	<table class="table table-hover">
-		    		<colgroup>
-		    			<col width="8%"></col>
-		    			<col width="*"></col>
-		    			<col width="10%"></col>
-		    			<col width="14%"></col>
-		    			<col width="8%"></col>
-		    		</colgroup>
-		    		<thead>
-		    			<tr>
-		    				<th>번호</th>
-		    				<th>제목</th>
-		    				<th>작성자</th>
-		    				<th>작성일</th>
-		    				<th>조회수</th>
-		    			</tr>
-		    		</thead>
-		    		<tbody id="noticeList">
-			    		<c:forEach var="list" items="${list}">
-			    			<tr>
-			    				<td class="t_center">${list.rownum}</td>
-			    				<td class="t_left"><a href="/cs/noticeView.do?seq=${list.seq}">${list.title}</a></td>
-			    				<td class="t_center">${list.writer}</td>
-			    				<td class="t_center">${list.writeDate}</td>
-			    				<td class="t_center">${list.hits}</td>
-			    			</tr>
-			    		</c:forEach>
-		    		</tbody>
-		    	</table>
 		    </div>
 					
 		</div>

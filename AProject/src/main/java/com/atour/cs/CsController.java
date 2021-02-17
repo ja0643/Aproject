@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,7 @@ public class CsController {
 
 		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
 		
+		mv.addObject("menuId", "cs");
 		mv.addObject("list", list);
 		
 		return mv;
@@ -55,10 +57,58 @@ public class CsController {
 		
 		csVO.setCategory("noti");
 		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
-		System.out.println("dddddd:::::::::"+ list);
+
 		retVal.put("list", list );
 		return retVal;
-//		return "cs/noticeList";
 		
 	}
+	
+	@RequestMapping(value = "/cs/noticeView.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView noticeView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("cs/noticeView");
+		Map<String,Object> resultView = new HashMap<String,Object>();
+		
+		csVO.setCategory("noti");
+		csVO.setSeq(Integer.parseInt(request.getParameter("seq")));	
+//		CsVO vo = csService.selectNoticeView(csVO);
+		resultView = csService.selectNoticeView(csVO);
+
+		mv.addObject("menuId", "cs");
+		mv.addObject("vo", resultView);
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "/cs/faqList.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView faqList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("cs/faqList");
+		csVO.setCategory("faq");
+
+//		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+		
+		mv.addObject("menuId", "cs");
+//		mv.addObject("list", list);
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "/cs/qnaList.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView qnaList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("cs/qnaList");
+		csVO.setCategory("qna");
+
+//		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+		
+		mv.addObject("menuId", "cs");
+//		mv.addObject("list", list);
+		
+		return mv;
+		
+	}
+	
 }

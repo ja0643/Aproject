@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-<title>고객센터>공지사항</title>
+<title>고객센터>고객문의</title>
 	
 <script type="text/javascript">
 function search(){
@@ -34,8 +34,6 @@ function search(){
         }
     });
 }
-
-
 </script>
 
 </head>
@@ -47,7 +45,7 @@ function search(){
 		<ul class="page_nav">
 			<li><a href="/">홈</a></li>
 			<li>고객센터</li>
-			<li>공지사항</li>
+			<li>고객문의</li>
 		</ul>
 	</div>
 	<div id="container">
@@ -57,16 +55,16 @@ function search(){
 				<div class="scroll_action">
 			        <a href="/cs/noticeList.do"><h2 class="tit_lnb_title">고객센터</h2></a>
 					<ul class="lnb_nav">
-						<li class="lnb_menu active"><a href="/cs/noticeList.do">공지사항</a></li>
+						<li class="lnb_menu"><a href="/cs/noticeList.do">공지사항</a></li>
 						<li class="lnb_menu"><a href="/cs/faqList.do">자주하는 질문</a></li>
-						<li class="lnb_menu"><a href="/cs/qnaList.do" class="">고객문의</a></li>
+						<li class="lnb_menu active"><a href="/cs/qnaList.do" class="">고객문의</a></li>
 					</ul>
 				</div>
 			</div>
 			
 			<div class="content" id="content">
 		
-		    	<h3 class="tit_con_title">공지사항</h3>
+		    	<h3 class="tit_con_title">고객문의</h3>
 		    	
 		    	<form action="/cs/noticeList.do" method="post" name="form" id="form">
 		    	
@@ -103,7 +101,7 @@ function search(){
 			    		<c:forEach var="list" items="${list}">
 			    			<tr>
 			    				<td class="t_center">${list.rownum}</td>
-			    				<td class="t_left"><a href="/cs/noticeView.do?seq=${list.seq}">${list.title}</a></td>
+			    				<td class="t_left">${list.title}</td>
 			    				<td class="t_center">${list.writer}</td>
 			    				<td class="t_center">${list.writeDate}</td>
 			    				<td class="t_center">${list.hits}</td>

@@ -113,6 +113,7 @@ ul.lnb_nav li.lnb_menu.active {
 
 /* TABLE */
 .table thead th{text-align: center;}
+.table.view > tbody tr th{background: #f3f3f3;}
 .t_left{text-align: left;}
 .t_center{text-align: center;}
 

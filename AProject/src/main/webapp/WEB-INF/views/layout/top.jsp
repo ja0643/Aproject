@@ -22,7 +22,11 @@
 <script src="/resources/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
 <script src="/resources/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
 <script src="/resources/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
+<%
 
+String url = request.getContextPath();
+
+%>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -66,7 +70,7 @@ function goMenu(url){
                     <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
                         <ul class="navbar-nav ml-auto">
                           <li class="nav-item">
-                            <a class="nav-link active" onclick="goMenu('/flight/main.do');" href="javascript:void(0);">항공</a>
+                            <a class="nav-link" onclick="goMenu('/flight/main.do');" href="javascript:void(0);">항공</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onclick="goMenu('/hotel/main.do');" href="javascript:void(0);">호텔</a>
@@ -78,7 +82,7 @@ function goMenu(url){
                             <a class="nav-link" onclick="goMenu('');" href="javascript:void(0);">렌터카</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="goMenu('/cs/noticeList.do');" href="javascript:void(0);">고객센터</a>
+                            <a class="nav-link <c:if test='${menuId eq "cs"}'>active</c:if>" onclick="goMenu('/cs/noticeList.do');" href="javascript:void(0);">고객센터</a>
                         </li>
                     </ul>
                 </div>                            
