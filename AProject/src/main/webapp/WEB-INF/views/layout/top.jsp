@@ -13,6 +13,7 @@
 
 <link rel="stylesheet" href="/resources/css/common.css" />
 <link rel="stylesheet" href="/resources/css/main.css" />
+<link rel="stylesheet" href="/resources/css/sub.css" />
 
 <!-- load JS files -->
 <script src="/resources/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->

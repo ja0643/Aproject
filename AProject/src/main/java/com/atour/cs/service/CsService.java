@@ -11,7 +11,12 @@ public interface CsService {
 
 	Map<String, Object> selectNoticeView(CsVO csVO) throws Exception;
 
-	void updateNoticeHits(CsVO csVO) throws Exception;
+	List<Map<String, Object>> selectFaqList(CsVO csVO);
 
+	List<Map<String, Object>> selectQnaList(CsVO csVO);
+
+	Map<String, Object> selectQnaView(CsVO csVO);
+
+	void qnaInsert(CsVO csVO);
 
 }

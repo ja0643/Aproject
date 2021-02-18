@@ -4,38 +4,6 @@
 <html>
 <head>
 <title>고객센터>자주하는 질문</title>
-	
-<script type="text/javascript">
-function search(){
-
-	$.ajax({
-		dataType : 'json',
-		async : false,
-        url : "/cs/noticeListAjax.do",
-        type : 'POST', 
-        data : $("#form").serialize(), 
-        success : function(data) {
-        	var result = data.list;
-        	$("#noticeList").empty();	//기존 목록 지우기
-        	var str = '<tr>';
-       		$.each(result , function(i){
-                   str += '<td class="t_center">' + result[i].rownum 
-                  		 + '</td><td class="t_left">' + result[i].title
-                  		 + '</td><td class="t_center">' + result[i].writer
-                  		 + '</td><td class="t_center">' + result[i].writeDate 
-                  		 + '</td><td class="t_center">' + result[i].hits + '</td>';
-                   str += '</tr>';
-            });
-       		$("#noticeList").append(str); 
-        }, 
-
-        error : function(data) {
-        	 console.log("error" + data);
-        }
-    });
-}
-</script>
-
 </head>
 <body>
 
@@ -66,7 +34,7 @@ function search(){
 		
 		    	<h3 class="tit_con_title">자주하는 질문</h3>
 		    	
-		    	<form action="/cs/noticeList.do" method="post" name="form" id="form">
+		    	<form action="/cs/faqList.do" method="post" name="fboard" id="fboard">
 		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">
@@ -80,43 +48,65 @@ function search(){
 		    	
 		    	</form>
 		    	
-		    	<table class="table table-hover">
-		    		<colgroup>
-		    			<col width="8%"></col>
-		    			<col width="*"></col>
-		    			<col width="10%"></col>
-		    			<col width="14%"></col>
-		    			<col width="8%"></col>
-		    		</colgroup>
-		    		<thead>
-		    			<tr>
-		    				<th>번호</th>
-		    				<th>제목</th>
-		    				<th>작성자</th>
-		    				<th>작성일</th>
-		    				<th>조회수</th>
-		    			</tr>
-		    		</thead>
-		    		<tbody id="noticeList">
-			    		<c:forEach var="list" items="${list}">
-			    			<tr>
-			    				<td class="t_center">${list.rownum}</td>
-			    				<td class="t_left">${list.title}</td>
-			    				<td class="t_center">${list.writer}</td>
-			    				<td class="t_center">${list.writeDate}</td>
-			    				<td class="t_center">${list.hits}</td>
-			    			</tr>
-			    		</c:forEach>
-		    		</tbody>
-		    	</table>
+		    	<div class="cont_faq" id="faqList">
+		    		<c:forEach var="list" items="${list}">
+				    	<div class="box_accordion">
+							<strong class="tit_faq"><span class="link_ellipsis">${list.title}</span><a href="javascript:void(0);" class="btn_more">보기</a></strong>
+							<div class="box_faq">
+								<p class="txt_answer"></p><p>${list.contents}</p>
+							</div>
+						</div>
+		    		</c:forEach>
+		    	</div>
+		    	
 		    </div>
 					
 		</div>
 	
-	
 	</div>
 	
+<script type="text/javascript">
+$(document).ready(function(){
+	faqToggle();
+});
+
+function search(){
+
+	$.ajax({
+		dataType : 'json',
+		async : false,
+        url : "/cs/faqListAjax.do",
+        type : 'POST', 
+        data : $("#fboard").serialize(), 
+        success : function(data) {
+        	var result = data.list;
+        	$("#faqList").empty();	//기존 목록 지우기
+        	var str = '';
+       		$.each(result , function(i){
+       			str += '<div class="box_accordion">' 
+                   		 + '<strong class="tit_faq"><span class="link_ellipsis">'
+                   		 + result[i].title 
+                  		 + '</span><a href="javascript:void(0);" class="btn_more">보기</a></strong>'
+                  		 + '<div class="box_faq"><p class="txt_answer"></p><p>' + result[i].contents
+                  		 + '</p></div>'
+                   str += '</div>';
+            });
+       		$("#faqList").append(str); 
+        }, 
+
+        error : function(data) {
+        }
+    });
 	
+}
+
+function faqToggle(){
+	$(document).on("click",".box_accordion", function(){
+		$(this).toggleClass("open");
+		$(this).find(".box_faq").slideToggle();
+	});
+}
+</script>
 	
 	<%@ include file="../layout/bottom.jsp"%>
 </body>

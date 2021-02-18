@@ -73,15 +73,139 @@
 		
 	</select>
 	
-	<update id="updateNoticeHits" parameterType="CsVO">
+	<update id="updateHits" parameterType="CsVO">
 		
 		UPDATE tb_board
 		SET hits = hits+1
 		WHERE 1=1
 		AND seq = #{seq}
 		
-		
 	</update>
 
+	<select id="selectFaqList" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT 
+			FORMAT(@rownum:=@rownum+1, 0) as rownum,
+			a.*
+		FROM 
+			(
+			SELECT 
+				seq as seq
+				, parent_seq as parentSeq
+				, category as category
+				, title as title
+				, contents as contents
+				, writer as writer
+				, date_format(write_date,'%Y-%m-%d') as writeDate
+				, hits as hits
+				, reply_yn as replyYn
+				, del_yn as delYn
+			FROM tb_board
+			WHERE category = #{category}
+			AND del_yn = 'N'
+			<include refid="searchCondition" />
+			) a,
+			(SELECT @rownum:=0) tmp
+		ORDER BY rownum DESC
+		
+	</select>
+	
+	<select id="selectQnaList" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT 
+			FORMAT(@rownum:=@rownum+1, 0) as rownum,
+			a.*
+		FROM 
+			(
+			SELECT 
+				seq as seq
+				, parent_seq as parentSeq
+				, category as category
+				, title as title
+				, contents as contents
+				, writer as writer
+				, date_format(write_date,'%Y-%m-%d') as writeDate
+				, hits as hits
+				, reply_yn as replyYn
+				, del_yn as delYn
+			FROM tb_board
+			WHERE category = #{category}
+			AND del_yn = 'N'
+			AND parent_seq = 0
+			<include refid="searchCondition" />
+			) a,
+			(SELECT @rownum:=0) tmp
+		ORDER BY rownum DESC
+		
+	</select>
+	
+	<select id="selectQnaView" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT 
+			seq as seq
+			, parent_seq as parentSeq
+			, category as category
+			, title as title
+			, contents as contents
+			, writer as writer
+			, date_format(write_date,'%Y-%m-%d') as writeDate
+			, hits as hits
+			, reply_yn as replyYn
+			, del_yn as delYn
+		FROM tb_board
+		WHERE category = #{category}
+		AND seq = #{seq}
+		AND parent_seq = 0
+		
+	</select>
+	
+	<select id="selectQnaReplyView" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT 
+			seq as seq
+			, parent_seq as parentSeq
+			, category as category
+			, title as title
+			, contents as contents
+			, writer as writer
+			, date_format(write_date,'%Y-%m-%d') as writeDate
+			, hits as hits
+			, reply_yn as replyYn
+			, del_yn as delYn
+		FROM tb_board
+		WHERE category = #{category}
+		AND parent_seq = #{seq}
+		
+	</select>
+
+	<insert id="qnaInsert" parameterType="CsVO">
+		
+		INSERT INTO tb_board (
+			seq
+			, parent_seq
+			, category
+			, title
+			, contents
+			, writer
+			, write_date
+			, hits
+			, reply_yn
+			, del_yn
+		) VALUES (
+			(SELECT a.maxSeq from (SELECT MAX(seq)+1 as maxSeq FROM tb_board) a ) 
+			, 0
+			, #{category}
+			, #{title}
+			, #{contents}
+			, #{writer}
+			, now()
+			, 0
+			, 'N'
+			, 'N'
+			);
+		
+		
+	</insert>
+	
 </mapper>
 

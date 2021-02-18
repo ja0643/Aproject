@@ -11,29 +11,43 @@ function search(){
 	$.ajax({
 		dataType : 'json',
 		async : false,
-        url : "/cs/noticeListAjax.do",
+        url : "/cs/qnaListAjax.do",
         type : 'POST', 
-        data : $("#form").serialize(), 
+        data : $("#fboard").serialize(), 
         success : function(data) {
         	var result = data.list;
-        	$("#noticeList").empty();	//기존 목록 지우기
+        	$("#qnaList").empty();	//기존 목록 지우기
         	var str = '<tr>';
        		$.each(result , function(i){
-                   str += '<td class="t_center">' + result[i].rownum 
-                  		 + '</td><td class="t_left">' + result[i].title
-                  		 + '</td><td class="t_center">' + result[i].writer
-                  		 + '</td><td class="t_center">' + result[i].writeDate 
-                  		 + '</td><td class="t_center">' + result[i].hits + '</td>';
-                   str += '</tr>';
+       			str += '<td class="t_center">' + result[i].rownum 
+	         		 + '</td><td class="t_left"><a href="/cs/qnaView.do?seq='+ result[i].seq +'">' + result[i].title             		 
+	         		 + '</a></td><td class="t_center">' + result[i].writer
+	         		 + '</td><td class="t_center">' + result[i].writeDate                   		 
+	         		 + '</td><td class="t_center">' + result[i].hits 
+	         		 + '</td><td class="t_center">' 
+	         		 if($.trim(result[i].replyYn) == 'Y'){
+	         	str += '	<span class="bd_icon1">답변완료</span>'
+	         		 }
+			  		 else if($.trim(result[i].replyYn) == 'N'){
+			  	str +=  '	<span class="bd_icon2">답변대기</span>'
+					 }
+	         	str += '</td>'
+	         	str += '</tr>';
             });
-       		$("#noticeList").append(str); 
+       		$("#qnaList").append(str); 
         }, 
 
         error : function(data) {
-        	 console.log("error" + data);
         }
     });
 }
+
+function goWrite(){
+	location.href="/cs/qnaWrite.do";
+}
+
+
+
 </script>
 
 </head>
@@ -53,7 +67,7 @@ function search(){
 		<div class="content_block">
 			<div class="lnb_block" style="top: -767px;">
 				<div class="scroll_action">
-			        <a href="/cs/noticeList.do"><h2 class="tit_lnb_title">고객센터</h2></a>
+			        <a href="/cs/qnaList.do"><h2 class="tit_lnb_title">고객센터</h2></a>
 					<ul class="lnb_nav">
 						<li class="lnb_menu"><a href="/cs/noticeList.do">공지사항</a></li>
 						<li class="lnb_menu"><a href="/cs/faqList.do">자주하는 질문</a></li>
@@ -66,7 +80,7 @@ function search(){
 		
 		    	<h3 class="tit_con_title">고객문의</h3>
 		    	
-		    	<form action="/cs/noticeList.do" method="post" name="form" id="form">
+		    	<form action="/cs/qnaList.do" method="post" name="fboard" id="fboard">
 		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">
@@ -87,6 +101,7 @@ function search(){
 		    			<col width="10%"></col>
 		    			<col width="14%"></col>
 		    			<col width="8%"></col>
+		    			<col width="10%"></col>
 		    		</colgroup>
 		    		<thead>
 		    			<tr>
@@ -95,20 +110,35 @@ function search(){
 		    				<th>작성자</th>
 		    				<th>작성일</th>
 		    				<th>조회수</th>
+		    				<th>답변여부</th>
 		    			</tr>
 		    		</thead>
-		    		<tbody id="noticeList">
+		    		<tbody id="qnaList">
 			    		<c:forEach var="list" items="${list}">
 			    			<tr>
 			    				<td class="t_center">${list.rownum}</td>
-			    				<td class="t_left">${list.title}</td>
+			    				<td class="t_left"><a href="/cs/qnaView.do?seq=${list.seq}">${list.title}</a></td>
 			    				<td class="t_center">${list.writer}</td>
 			    				<td class="t_center">${list.writeDate}</td>
 			    				<td class="t_center">${list.hits}</td>
+			    				<td class="t_center">
+			    					<c:if test="${list.replyYn ne '' || list.replyYn ne null }">
+				    					<c:if test="${list.replyYn eq 'Y'}">
+				    						<span class="bd_icon1">답변완료</span>
+				    					</c:if>
+				    					<c:if test="${list.replyYn eq 'N'}">
+				    						<span class="bd_icon2">답변대기</span>
+				    					</c:if>
+			    					</c:if>
+			    				</td>
 			    			</tr>
 			    		</c:forEach>
 		    		</tbody>
 		    	</table>
+		    	<div class="pull-right">
+		    		<button type="button" class="btn btn-primary" onclick="goWrite()">작성</button>
+		    	</div>
+		    	
 		    </div>
 					
 		</div>

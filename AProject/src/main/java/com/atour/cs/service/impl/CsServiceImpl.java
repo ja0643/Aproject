@@ -32,18 +32,40 @@ public class CsServiceImpl implements CsService{
 		
 		Map<String,Object> resultView = new HashMap<String,Object>();
 		
-		csDAO.updateNoticeHits(csVO);
+		csDAO.updateHits(csVO);
 		
 		resultView = csDAO.selectNoticeView(csVO);
-		
 		
 		return resultView;
 	}
 
 	@Override
-	public void updateNoticeHits(CsVO csVO) throws Exception {
-		// TODO Auto-generated method stub
+	public List<Map<String, Object>> selectFaqList(CsVO csVO) {
+		return csDAO.selectFaqList(csVO);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectQnaList(CsVO csVO) {
+		return csDAO.selectQnaList(csVO);
+	}
+
+	@Override
+	public Map<String, Object> selectQnaView(CsVO csVO) {
+
+		Map<String,Object> resultView = new HashMap<String,Object>();
+		
+		csDAO.updateHits(csVO);
+		
+		resultView.put("resultList", csDAO.selectQnaView(csVO));
+		resultView.put("resultReply", csDAO.selectQnaReplyView(csVO));
+		
+		return resultView;
+	}
+
+	@Override
+	public void qnaInsert(CsVO csVO) {
+		csDAO.qnaInsert(csVO);
 		
 	}
-	
+
 }

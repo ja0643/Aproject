@@ -13,15 +13,15 @@ function search(){
 		async : false,
         url : "/cs/noticeListAjax.do",
         type : 'POST', 
-        data : $("#form").serialize(), 
+        data : $("#fboard").serialize(), 
         success : function(data) {
         	var result = data.list;
         	$("#noticeList").empty();	//기존 목록 지우기
         	var str = '<tr>';
        		$.each(result , function(i){
                    str += '<td class="t_center">' + result[i].rownum 
-                  		 + '</td><td class="t_left">' + result[i].title
-                  		 + '</td><td class="t_center">' + result[i].writer
+                  		 + '</td><td class="t_left"><a href="/cs/noticeView.do?seq='+ result[i].seq +'">' + result[i].title
+                  		 + '</a></td><td class="t_center">' + result[i].writer
                   		 + '</td><td class="t_center">' + result[i].writeDate 
                   		 + '</td><td class="t_center">' + result[i].hits + '</td>';
                    str += '</tr>';
@@ -30,7 +30,6 @@ function search(){
         }, 
 
         error : function(data) {
-        	 console.log("error" + data);
         }
     });
 }
@@ -68,7 +67,7 @@ function search(){
 		
 		    	<h3 class="tit_con_title">공지사항</h3>
 		    	
-		    	<form action="/cs/noticeList.do" method="post" name="form" id="form">
+		    	<form action="/cs/noticeList.do" method="post" name="fboard" id="fboard">
 		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">

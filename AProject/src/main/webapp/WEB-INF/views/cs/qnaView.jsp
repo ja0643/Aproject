@@ -7,7 +7,7 @@
 	
 <script type="text/javascript">
 function goList(){
-	location.href="/cs/noticeList.do";
+	location.href="/cs/qnaList.do";
 }
 </script>
 
@@ -28,11 +28,11 @@ function goList(){
 		<div class="content_block">
 			<div class="lnb_block" style="top: -767px;">
 				<div class="scroll_action">
-			        <a href="/cs/noticeList.do"><h2 class="tit_lnb_title">고객센터</h2></a>
+			        <a href="/cs/qnaList.do"><h2 class="tit_lnb_title">고객센터</h2></a>
 					<ul class="lnb_nav">
-						<li class="lnb_menu active"><a href="/cs/noticeList.do">공지사항</a></li>
+						<li class="lnb_menu"><a href="/cs/noticeList.do">공지사항</a></li>
 						<li class="lnb_menu"><a href="/cs/faqList.do">자주하는 질문</a></li>
-						<li class="lnb_menu"><a href="/cs/qnaList.do" class="">고객문의</a></li>
+						<li class="lnb_menu active"><a href="/cs/qnaList.do" class="">고객문의</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,9 +67,27 @@ function goList(){
 							<th>내용</th>
 							<td colspan="3">${vo.contents}</td>
 						</tr>
-						
 					</tbody>
-				</table>    	
+				</table>   
+				
+				<c:if test="${!empty reply}">
+					<table class="table replyView">
+						<colgroup>
+							<col width="20%"/>
+							<col width="*"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>답변제목</th>
+								<td colspan="3">${reply.title}</td>
+							</tr>
+							<tr style="height:200px;">
+								<th>답변내용</th>
+								<td colspan="3">${reply.contents}</td>
+							</tr>
+						</tbody>
+					</table>  
+				</c:if>
 				<div class="pull-right">
 <!-- 					<button type="submit" class="btn btn-primary">작성</button> -->
 					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>

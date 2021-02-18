@@ -71,7 +71,6 @@ public class CsController {
 		
 		csVO.setCategory("noti");
 		csVO.setSeq(Integer.parseInt(request.getParameter("seq")));	
-//		CsVO vo = csService.selectNoticeView(csVO);
 		resultView = csService.selectNoticeView(csVO);
 
 		mv.addObject("menuId", "cs");
@@ -87,12 +86,26 @@ public class CsController {
 		ModelAndView mv = new ModelAndView("cs/faqList");
 		csVO.setCategory("faq");
 
-//		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+		List<Map<String, Object>> list = csService.selectFaqList(csVO);
 		
 		mv.addObject("menuId", "cs");
-//		mv.addObject("list", list);
+		mv.addObject("list", list);
 		
 		return mv;
+		
+	}
+	
+	@RequestMapping(value = "/cs/faqListAjax.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Object faqListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, Model model) throws Exception {
+		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		
+		csVO.setCategory("faq");
+		List<Map<String, Object>> list = csService.selectFaqList(csVO);
+
+		retVal.put("list", list );
+		return retVal;
 		
 	}
 	
@@ -102,13 +115,63 @@ public class CsController {
 		ModelAndView mv = new ModelAndView("cs/qnaList");
 		csVO.setCategory("qna");
 
-//		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+		List<Map<String, Object>> list = csService.selectQnaList(csVO);
 		
 		mv.addObject("menuId", "cs");
-//		mv.addObject("list", list);
+		mv.addObject("list", list);
 		
 		return mv;
 		
 	}
 	
+	@RequestMapping(value = "/cs/qnaListAjax.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Object qnaListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, Model model) throws Exception {
+		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		
+		csVO.setCategory("qna");
+		List<Map<String, Object>> list = csService.selectQnaList(csVO);
+
+		retVal.put("list", list );
+		return retVal;
+		
+	}
+	
+	@RequestMapping(value = "/cs/qnaView.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView qnaView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("cs/qnaView");
+		Map<String,Object> resultView = new HashMap<String,Object>();
+		
+		csVO.setCategory("qna");
+		csVO.setSeq(Integer.parseInt(request.getParameter("seq")));	
+		resultView = csService.selectQnaView(csVO);
+
+		mv.addObject("menuId", "cs");
+		mv.addObject("vo", resultView.get("resultList"));
+		mv.addObject("reply", resultView.get("resultReply"));
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "/cs/qnaWrite.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView qnaWrite(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("cs/qnaWrite");
+		csVO.setCategory("qna");
+		mv.addObject("menuId", "cs");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "/cs/qnaInsert.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody void qnaInsert(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		csVO.setCategory("qna");
+		csService.qnaInsert(csVO);
+		
+	}
 }

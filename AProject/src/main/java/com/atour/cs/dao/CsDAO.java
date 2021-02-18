@@ -19,9 +19,30 @@ public class CsDAO extends AbstractDAO{
 		return (Map<String, Object>) selectOne("cs.selectNoticeView", csVO);
 	}
 
-	public void updateNoticeHits(CsVO csVO) {
-		update("cs.updateNoticeHits", csVO);
+	public void updateHits(CsVO csVO) {
+		update("cs.updateHits", csVO);
+	}
+
+	public List<Map<String, Object>> selectFaqList(CsVO csVO) {
+		return (List<Map<String, Object>>)selectList("cs.selectFaqList", csVO);
+	}
+
+	public List<Map<String, Object>> selectQnaList(CsVO csVO) {
+		return (List<Map<String, Object>>)selectList("cs.selectQnaList", csVO);
+	}
+
+	public Map<String, Object> selectQnaView(CsVO csVO) {
+		return (Map<String, Object>) selectOne("cs.selectQnaView", csVO);
+	}
+
+	public Object selectQnaReplyView(CsVO csVO) {
+		return (Map<String, Object>) selectOne("cs.selectQnaReplyView", csVO);
+	}
+
+	public void qnaInsert(CsVO csVO) {
+		insert("cs.qnaInsert", csVO);
 		
 	}
+
 
 }

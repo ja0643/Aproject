@@ -48,6 +48,7 @@ ul.page_nav li {
     margin-left: 10px;
     font-size: 14px;
     color: #777;
+    background: url(/resources/img/icon/bl_pagenav.jpg) no-repeat 0 50%;
 }
 
 .content_block {
@@ -73,7 +74,7 @@ ul.page_nav li {
     line-height: 1;
     margin-bottom: 7px;
     padding: 0 30px 22px 30px;
-    background: #fff url(/static/images/content/bl/bl_lnb_line.png) no-repeat 30px 100%;
+/*     background: #fff url(/static/images/content/bl/bl_lnb_line.png) no-repeat 30px 100%; */
     font-size: 26px;
     font-family: 'Noto_m';
     color: #222;
@@ -114,6 +115,7 @@ ul.lnb_nav li.lnb_menu.active {
 /* TABLE */
 .table thead th{text-align: center;}
 .table.view > tbody tr th{background: #f3f3f3;}
+.table.replyView > tbody tr th{background: #E1BDBD;}
 .t_left{text-align: left;}
 .t_center{text-align: center;}
 
@@ -132,6 +134,23 @@ ul.lnb_nav li.lnb_menu.active {
 }
 .sch_btn{
 	vertical-align: baseline;
+}
+
+#fboard:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+
+.link_ellipsis {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    vertical-align: inherit;
+    text-align: left;
+    overflow: hidden;
 }
 
 /* FONT */
