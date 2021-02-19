@@ -157,21 +157,90 @@ public class CsController {
 	}
 	
 	@RequestMapping(value = "/cs/qnaWrite.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView qnaWrite(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public ModelAndView qnaWrite(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
 		
-		ModelAndView mv = new ModelAndView("cs/qnaWrite");
-		csVO.setCategory("qna");
+		String mode = request.getParameter("mode");
+		ModelAndView mv = new ModelAndView("");
+		Map<String,Object> resultView = new HashMap<String,Object>();
+
 		mv.addObject("menuId", "cs");
+		csVO.setCategory("qna");
+		
+		if("W".equals(mode)) {
+			mv = new ModelAndView("cs/qnaWrite");
+		}else if("M".equals(mode)) {
+			mv = new ModelAndView("cs/qnaModify");
+			resultView = csService.selectQnaView(csVO);
+			mv.addObject("vo", resultView.get("resultList"));
+			
+		}
+		
 		
 		return mv;
 		
 	}
 	
-	@RequestMapping(value = "/cs/qnaInsert.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody void qnaInsert(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	@ResponseBody
+	@RequestMapping(value = "/cs/qnaInsert.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
+	public String qnaInsert(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		String message = "";
 		
 		csVO.setCategory("qna");
-		csService.qnaInsert(csVO);
+		int result = csService.qnaInsert(csVO);
 		
+		if(result == 1) {
+			logger.debug("게시글 등록 성공");
+			message = "게시글이 저장되었습니다.";
+			
+		}else {
+			logger.debug("게시글 등록 실패");
+			message = "게시글 저장이 실패되었습니다. 관리자에게 문의하세요";
+		}
+		
+		return message;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/cs/qnaUpdate.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
+	public String qnaUpdate(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		String message = "";
+		
+		csVO.setCategory("qna");
+		int result = csService.qnaUpdate(csVO);
+		
+		if(result == 1) {
+			logger.debug("게시글 수정 성공");
+			message = "게시글이 수정되었습니다.";
+			
+		}else {
+			logger.debug("게시글 수정 실패");
+			message = "게시글 수정이 실패되었습니다. 관리자에게 문의하세요";
+		}
+		
+		return message;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/cs/qnaDelete.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
+	public String qnaDelete(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+		
+		String message = "";
+		
+		csVO.setCategory("qna");
+		int result = csService.qnaDelete(csVO);
+		
+		if(result == 1) {
+			logger.debug("게시글 삭제 성공");
+			message = "게시글이 삭제되었습니다.";
+			
+		}else {
+			logger.debug("게시글 삭제 실패");
+			message = "게시글 삭제가 실패되었습니다. 관리자에게 문의하세요";
+		}
+		
+		return message;
+	}
+	
 }

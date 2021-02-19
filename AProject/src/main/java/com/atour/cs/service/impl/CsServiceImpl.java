@@ -63,9 +63,19 @@ public class CsServiceImpl implements CsService{
 	}
 
 	@Override
-	public void qnaInsert(CsVO csVO) {
-		csDAO.qnaInsert(csVO);
+	public int qnaInsert(CsVO csVO) {
+		return csDAO.qnaInsert(csVO);
 		
+	}
+
+	@Override
+	public int qnaUpdate(CsVO csVO) {
+		return csDAO.qnaUpdate(csVO);
+	}
+
+	@Override
+	public int qnaDelete(CsVO csVO) {
+		return csDAO.qnaDelete(csVO);
 	}
 
 }

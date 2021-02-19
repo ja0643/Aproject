@@ -43,7 +43,7 @@ function search(){
 }
 
 function goWrite(){
-	location.href="/cs/qnaWrite.do";
+	$("#fboard").submit();
 }
 
 
@@ -80,7 +80,8 @@ function goWrite(){
 		
 		    	<h3 class="tit_con_title">고객문의</h3>
 		    	
-		    	<form action="/cs/qnaList.do" method="post" name="fboard" id="fboard">
+		    	<form action="/cs/qnaWrite.do" method="post" name="fboard" id="fboard">
+		    	<input type="hidden" id="mode" name="mode" value="W"/>
 		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">

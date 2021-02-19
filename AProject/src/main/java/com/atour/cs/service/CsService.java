@@ -17,6 +17,10 @@ public interface CsService {
 
 	Map<String, Object> selectQnaView(CsVO csVO);
 
-	void qnaInsert(CsVO csVO);
+	int qnaInsert(CsVO csVO);
+
+	int qnaUpdate(CsVO csVO);
+
+	int qnaDelete(CsVO csVO);
 
 }

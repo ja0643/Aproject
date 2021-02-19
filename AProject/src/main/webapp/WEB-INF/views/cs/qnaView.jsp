@@ -9,6 +9,28 @@
 function goList(){
 	location.href="/cs/qnaList.do";
 }
+
+function fnDelete(){
+	$.ajax({
+		dataType : 'text',
+		async : false,
+        url : "/cs/qnaDelete.do",
+        type : 'POST', 
+        data : $("#fboard").serialize(), 
+        success : function(result) {
+        	alert(result);
+        	goList();
+        }, 
+
+        error : function(result) {
+        	alert(result);
+        }
+    });
+}
+
+function goWrite(){
+	$("#fboard").submit();
+}
 </script>
 
 </head>
@@ -39,8 +61,11 @@ function goList(){
 			
 			<div class="content" id="content">
 		
-		    	<h3 class="tit_con_title">공지사항</h3>
-			
+		    	<h3 class="tit_con_title">고객문의</h3>
+			<form action="/cs/qnaWrite.do" method="post" name="fboard" id="fboard">
+				<input type="hidden" name="seq" id="seq" value="${vo.seq}" />
+				<input type="hidden" name="mode" id="mode" value="M" />
+			</form>
 				<table class="table view">
 					<colgroup>
 						<col width="20%"/>
@@ -90,6 +115,8 @@ function goList(){
 				</c:if>
 				<div class="pull-right">
 <!-- 					<button type="submit" class="btn btn-primary">작성</button> -->
+					<button type="button" class="btn btn-primary" onclick="goWrite()">수정</button>
+					<button type="button" class="btn btn-delete" onclick="fnDelete()">삭제</button>
 					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
 				</div>
 		    	

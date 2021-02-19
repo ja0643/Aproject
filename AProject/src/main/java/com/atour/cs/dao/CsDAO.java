@@ -39,9 +39,17 @@ public class CsDAO extends AbstractDAO{
 		return (Map<String, Object>) selectOne("cs.selectQnaReplyView", csVO);
 	}
 
-	public void qnaInsert(CsVO csVO) {
-		insert("cs.qnaInsert", csVO);
+	public int qnaInsert(CsVO csVO) {
+		return (int) insert("cs.qnaInsert", csVO);
 		
+	}
+
+	public int qnaUpdate(CsVO csVO) {
+		return (int) insert("cs.qnaUpdate", csVO);
+	}
+
+	public int qnaDelete(CsVO csVO) {
+		return (int) insert("cs.qnaDelete", csVO);
 	}
 
 

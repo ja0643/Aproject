@@ -17,12 +17,13 @@ function insert(){
         url : "/cs/qnaInsert.do",
         type : 'POST', 
         data : $("#fboard").serialize(), 
-        success : function(data) {
-        	alert("저장되었습니다.");
+        success : function(result) {
+        	alert(result);
         	goList();
         }, 
 
-        error : function(data) {
+        error : function(result) {
+        	alert(result);
         }
     });
 }

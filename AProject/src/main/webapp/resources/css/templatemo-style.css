@@ -51,13 +51,22 @@ p:last-child { margin-bottom: 0; }
 .btn-primary {
     background: #ffc72c;
 /*     background: #69c6ba; */
-    border: none;
-    border-radius: 0;
+    border-color: #ffc72c;
+/*     border-radius: 0; */
     outline: none;
 }
 
-/* .btn-primary:hover { background: #c66995; } */
-.btn-primary:hover { background: #6A3D31; }
+.btn-delete {
+    background: #CE040B;
+/*     background: #69c6ba; */
+    border-color: #CE040B;
+/*     border-radius: 0; */
+    outline: none;
+    color: #fff;
+}
+
+.btn-primary:hover { background: #E6C02C; border-color: #E6C02C;}
+.btn-delete:hover { background: #AF080E; border-color: #AF080E; color: #fff;}
 .tm-top-bar .navbar-expand-lg .navbar-nav .nav-link { padding: 39px 35px; }
 
 .tm-top-bar {
