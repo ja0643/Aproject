@@ -35,15 +35,18 @@ public class CsController {
 
 	
 	@RequestMapping(value = "/cs/noticeList.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView noticeList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public ModelAndView noticeList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("cs/noticeList");
 		csVO.setCategory("noti");
 
-		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+//		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
+		
+//		Map<String, Object> result = csService.selectNoticeList(csVO);
+		
 		
 		mv.addObject("menuId", "cs");
-		mv.addObject("list", list);
+//		mv.addObject("list", result);
 		
 		return mv;
 		
@@ -51,20 +54,25 @@ public class CsController {
 	
 	@RequestMapping(value = "/cs/noticeListAjax.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Object noticeListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, Model model) throws Exception {
+	public Object noticeListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> retVal = new HashMap<String, Object>();
 		
 		csVO.setCategory("noti");
-		List<Map<String, Object>> list = csService.selectNoticeList(csVO);
 
-		retVal.put("list", list );
+		param.put("pageNo", request.getParameter("pageNo"));
+		param.put("countPerPage", request.getParameter("countPerPage"));
+		
+		Map<String, Object> result = csService.selectNoticeList(csVO, param);
+
+		retVal.put("list", result.get("result"));
+		retVal.put("page", result.get("page"));
 		return retVal;
 		
 	}
 	
 	@RequestMapping(value = "/cs/noticeView.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView noticeView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView noticeView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, HttpServletRequest request) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("cs/noticeView");
 		Map<String,Object> resultView = new HashMap<String,Object>();
@@ -81,15 +89,15 @@ public class CsController {
 	}
 	
 	@RequestMapping(value = "/cs/faqList.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView faqList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public ModelAndView faqList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("cs/faqList");
 		csVO.setCategory("faq");
 
-		List<Map<String, Object>> list = csService.selectFaqList(csVO);
+//		List<Map<String, Object>> list = csService.selectFaqList(csVO);
 		
 		mv.addObject("menuId", "cs");
-		mv.addObject("list", list);
+//		mv.addObject("list", list);
 		
 		return mv;
 		
@@ -97,28 +105,33 @@ public class CsController {
 	
 	@RequestMapping(value = "/cs/faqListAjax.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Object faqListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, Model model) throws Exception {
+	public Object faqListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> retVal = new HashMap<String, Object>();
 		
+		param.put("pageNo", request.getParameter("pageNo"));
+		param.put("countPerPage", request.getParameter("countPerPage"));
+		
 		csVO.setCategory("faq");
-		List<Map<String, Object>> list = csService.selectFaqList(csVO);
+		Map<String, Object> result = csService.selectFaqList(csVO, param);
 
-		retVal.put("list", list );
+		retVal.put("list", result.get("result"));
+		retVal.put("page", result.get("page"));
+		
 		return retVal;
 		
 	}
 	
 	@RequestMapping(value = "/cs/qnaList.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView qnaList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public ModelAndView qnaList(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("cs/qnaList");
 		csVO.setCategory("qna");
 
-		List<Map<String, Object>> list = csService.selectQnaList(csVO);
+//		List<Map<String, Object>> list = csService.selectQnaList(csVO);
 		
 		mv.addObject("menuId", "cs");
-		mv.addObject("list", list);
+//		mv.addObject("list", list);
 		
 		return mv;
 		
@@ -126,20 +139,25 @@ public class CsController {
 	
 	@RequestMapping(value = "/cs/qnaListAjax.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Object qnaListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, Model model) throws Exception {
+	public Object qnaListAjax(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> retVal = new HashMap<String, Object>();
 		
+		param.put("pageNo", request.getParameter("pageNo"));
+		param.put("countPerPage", request.getParameter("countPerPage"));
+		
 		csVO.setCategory("qna");
-		List<Map<String, Object>> list = csService.selectQnaList(csVO);
+		Map<String, Object> result = csService.selectQnaList(csVO, param);
 
-		retVal.put("list", list );
+		retVal.put("list", result.get("result"));
+		retVal.put("page", result.get("page"));
+		
 		return retVal;
 		
 	}
 	
 	@RequestMapping(value = "/cs/qnaView.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView qnaView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView qnaView(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, HttpServletRequest request) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("cs/qnaView");
 		Map<String,Object> resultView = new HashMap<String,Object>();
@@ -157,7 +175,7 @@ public class CsController {
 	}
 	
 	@RequestMapping(value = "/cs/qnaWrite.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView qnaWrite(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView qnaWrite(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param, HttpServletRequest request) throws Exception {
 		
 		String mode = request.getParameter("mode");
 		ModelAndView mv = new ModelAndView("");
@@ -182,7 +200,7 @@ public class CsController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/cs/qnaInsert.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
-	public String qnaInsert(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public String qnaInsert(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		String message = "";
 		
@@ -203,7 +221,7 @@ public class CsController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/cs/qnaUpdate.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
-	public String qnaUpdate(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public String qnaUpdate(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		String message = "";
 		
@@ -224,7 +242,7 @@ public class CsController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/cs/qnaDelete.do", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=utf8")
-	public String qnaDelete(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> commandMap) throws Exception {
+	public String qnaDelete(@ModelAttribute("csVO") CsVO csVO, Map<String, Object> param) throws Exception {
 		
 		String message = "";
 		

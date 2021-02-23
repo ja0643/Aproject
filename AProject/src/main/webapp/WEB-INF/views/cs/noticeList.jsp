@@ -5,38 +5,6 @@
 <head>
 <title>고객센터>공지사항</title>
 	
-<script type="text/javascript">
-function search(){
-
-	$.ajax({
-		dataType : 'json',
-		async : false,
-        url : "/cs/noticeListAjax.do",
-        type : 'POST', 
-        data : $("#fboard").serialize(), 
-        success : function(data) {
-        	var result = data.list;
-        	$("#noticeList").empty();	//기존 목록 지우기
-        	var str = '<tr>';
-       		$.each(result , function(i){
-                   str += '<td class="t_center">' + result[i].rownum 
-                  		 + '</td><td class="t_left"><a href="/cs/noticeView.do?seq='+ result[i].seq +'">' + result[i].title
-                  		 + '</a></td><td class="t_center">' + result[i].writer
-                  		 + '</td><td class="t_center">' + result[i].writeDate 
-                  		 + '</td><td class="t_center">' + result[i].hits + '</td>';
-                   str += '</tr>';
-            });
-       		$("#noticeList").append(str); 
-        }, 
-
-        error : function(data) {
-        }
-    });
-}
-
-
-</script>
-
 </head>
 <body>
 
@@ -69,6 +37,10 @@ function search(){
 		    	
 		    	<form action="/cs/noticeList.do" method="post" name="fboard" id="fboard">
 		    	
+		    	<input type="hidden" id="pageNo" name="pageNo" value=""/>
+		    	<input type="hidden" id="countPerPage" name="countPerPage" value="10"/>
+		    	<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}"/>
+		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">
 		    			<option value="all">전체</option>
@@ -76,7 +48,7 @@ function search(){
 		    			<option value="contents">내용</option>
 		    		</select>
 	    			<input type="text" class="form-control-sm" placeholder="검색어를 입력하세요" name="searchWrd" id="searchWrd" title="검색어" value="">
-		    		<button type="button" class="btn btn-dark sch_btn" onclick="search();">검색</button>
+		    		<button type="button" class="btn btn-dark sch_btn" onclick="goPaging_boardList('1');">검색</button>
 		    	</div>
 		    	
 		    	</form>
@@ -110,6 +82,9 @@ function search(){
 			    		</c:forEach>
 		    		</tbody>
 		    	</table>
+		    	
+		    	<div id="paging"></div>
+		    	
 		    </div>
 					
 		</div>
@@ -117,9 +92,55 @@ function search(){
 	
 	</div>
 	
-	
-	
 	<%@ include file="../layout/bottom.jsp"%>
+	
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	goPaging_boardList(1);
+	
+});
+
+
+function goPaging_boardList(no){
+
+	var pageNo = (no || 1);
+	$("#pageNo").val(pageNo);
+	
+	$.ajax({
+		dataType : 'json',
+		async : false,
+        url : "/cs/noticeListAjax.do",
+        type : 'POST', 
+        data : $("#fboard").serialize(), 
+        success : function(data) {
+        	var result = data.list;
+        	
+        	var page = data.page;	//페이징 변수
+        	var page_viewList = Paging(page.totalCount, 10, 10 , pageNo, "boardList");
+        	
+        	$("#noticeList").empty();	//기존 목록 지우기
+        	var str = '<tr>';
+       		$.each(result , function(i){
+                   str += '<td class="t_center">' + result[i].rownum 
+                  		 + '</td><td class="t_left"><a href="/cs/noticeView.do?seq='+ result[i].seq +'">' + result[i].title
+                  		 + '</a></td><td class="t_center">' + result[i].writer
+                  		 + '</td><td class="t_center">' + result[i].writeDate 
+                  		 + '</td><td class="t_center">' + result[i].hits + '</td>';
+                   str += '</tr>';
+            });
+       		$("#noticeList").append(str); 
+       		
+       		$("#paging").empty().html(page_viewList);	//페이징 그리기
+        }, 
+
+        error : function(data) {
+        }
+    });
+}
+
+
+</script>
 </body>
 </html>
 

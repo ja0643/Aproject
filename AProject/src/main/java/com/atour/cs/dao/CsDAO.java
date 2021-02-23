@@ -52,5 +52,17 @@ public class CsDAO extends AbstractDAO{
 		return (int) insert("cs.qnaDelete", csVO);
 	}
 
+	public int selectNoticeListCount(CsVO csVO) {
+		return (int) selectOne("cs.selectNoticeListCount", csVO);
+	}
+
+	public int selectFaqListCount(CsVO csVO) {
+		return (int) selectOne("cs.selectFaqListCount", csVO);
+	}
+
+	public int selectQnaListCount(CsVO csVO) {
+		return (int) selectOne("cs.selectQnaListCount", csVO);
+	}
+
 
 }

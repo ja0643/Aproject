@@ -7,7 +7,7 @@ fieldset {border:none}
 a {color:inherit; text-decoration:none} 
 a:hover, a:active {text-decoration:none}
 em {font-style:normal; font-weight:normal}
-strong {font-weight:normal; font-family:'Noto_m'}
+strong {font-weight:700; font-family:'Noto_m'}
 textarea {resize:none; font-family:'Noto_r'; font-size:15px}
 table {border-spacing:0; border-collapse:collapse; box-sizing:border-box}
 caption {width:0; height:0; font-size:0; line-height:0; visibility:hidden; overflow:hidden}
@@ -99,6 +99,7 @@ ul.lnb_nav li.lnb_menu.active {
     width: 910px;
     min-height: 600px;
 }
+
 .content>.tit_con_title {
     padding: 10px 0 20px 0;
     border-bottom: 2px solid #222;
@@ -142,6 +143,16 @@ ul.lnb_nav li.lnb_menu.active {
 	clear: both;
 }
 
+.btn_wrap:after{display: block; clear: both; content:'';}
+
+ul.pagination{
+	display: inherit;
+	text-align: center;
+}
+
+ul.pagination li{
+	display: inline-block;
+}
 
 .link_ellipsis {
     display: inline-block;
@@ -152,6 +163,13 @@ ul.lnb_nav li.lnb_menu.active {
     text-align: left;
     overflow: hidden;
 }
+
+
+/* PAGING */
+.page-link{color: #191919;}
+.page-link:hover{color: #191919;}
+
+
 
 /* FONT */
 @font-face {

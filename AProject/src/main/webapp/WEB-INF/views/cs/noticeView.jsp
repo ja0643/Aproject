@@ -69,10 +69,11 @@ function goList(){
 						</tr>
 						
 					</tbody>
-				</table>    	
-				<div class="pull-right">
-<!-- 					<button type="submit" class="btn btn-primary">작성</button> -->
-					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
+				</table>    
+				<div class="btn_wrap">	
+					<div class="pull-right">
+						<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
+					</div>
 				</div>
 		    	
 		    </div>

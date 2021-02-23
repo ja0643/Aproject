@@ -7,13 +7,13 @@ import com.atour.cs.vo.CsVO;
 
 public interface CsService {
 
-	List<Map<String, Object>> selectNoticeList(CsVO csVO) throws Exception;
+	Map<String, Object> selectNoticeList(CsVO csVO, Map<String, Object> param) throws Exception;
 
 	Map<String, Object> selectNoticeView(CsVO csVO) throws Exception;
 
-	List<Map<String, Object>> selectFaqList(CsVO csVO);
+	Map<String, Object> selectFaqList(CsVO csVO, Map<String, Object> param);
 
-	List<Map<String, Object>> selectQnaList(CsVO csVO);
+	Map<String, Object> selectQnaList(CsVO csVO, Map<String, Object> param);
 
 	Map<String, Object> selectQnaView(CsVO csVO);
 

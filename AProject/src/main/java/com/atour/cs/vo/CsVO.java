@@ -1,6 +1,8 @@
 package com.atour.cs.vo;
 
-public class CsVO {
+import com.atour.common.vo.CommonVO;
+
+public class CsVO extends CommonVO{
 	
 	private Integer rownum;
 	private Integer seq;

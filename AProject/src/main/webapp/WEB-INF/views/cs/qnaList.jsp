@@ -5,51 +5,6 @@
 <head>
 <title>고객센터>고객문의</title>
 	
-<script type="text/javascript">
-function search(){
-
-	$.ajax({
-		dataType : 'json',
-		async : false,
-        url : "/cs/qnaListAjax.do",
-        type : 'POST', 
-        data : $("#fboard").serialize(), 
-        success : function(data) {
-        	var result = data.list;
-        	$("#qnaList").empty();	//기존 목록 지우기
-        	var str = '<tr>';
-       		$.each(result , function(i){
-       			str += '<td class="t_center">' + result[i].rownum 
-	         		 + '</td><td class="t_left"><a href="/cs/qnaView.do?seq='+ result[i].seq +'">' + result[i].title             		 
-	         		 + '</a></td><td class="t_center">' + result[i].writer
-	         		 + '</td><td class="t_center">' + result[i].writeDate                   		 
-	         		 + '</td><td class="t_center">' + result[i].hits 
-	         		 + '</td><td class="t_center">' 
-	         		 if($.trim(result[i].replyYn) == 'Y'){
-	         	str += '	<span class="bd_icon1">답변완료</span>'
-	         		 }
-			  		 else if($.trim(result[i].replyYn) == 'N'){
-			  	str +=  '	<span class="bd_icon2">답변대기</span>'
-					 }
-	         	str += '</td>'
-	         	str += '</tr>';
-            });
-       		$("#qnaList").append(str); 
-        }, 
-
-        error : function(data) {
-        }
-    });
-}
-
-function goWrite(){
-	$("#fboard").submit();
-}
-
-
-
-</script>
-
 </head>
 <body>
 
@@ -81,7 +36,11 @@ function goWrite(){
 		    	<h3 class="tit_con_title">고객문의</h3>
 		    	
 		    	<form action="/cs/qnaWrite.do" method="post" name="fboard" id="fboard">
+
 		    	<input type="hidden" id="mode" name="mode" value="W"/>
+		    	<input type="hidden" id="pageNo" name="pageNo" value=""/>
+		    	<input type="hidden" id="countPerPage" name="countPerPage" value="10"/>
+		    	<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}"/>
 		    	
 		    	<div class="search pull-right">
 		    		<select name="searchCondition" id="searchCondition" class="sch_select">
@@ -136,9 +95,13 @@ function goWrite(){
 			    		</c:forEach>
 		    		</tbody>
 		    	</table>
-		    	<div class="pull-right">
-		    		<button type="button" class="btn btn-primary" onclick="goWrite()">작성</button>
+		    	<div class="btn_wrap">
+			    	<div class="pull-right">
+			    		<button type="button" class="btn btn-primary" onclick="goWrite()">작성</button>
+			    	</div>
 		    	</div>
+		    	
+		    	<div id="paging"></div>
 		    	
 		    </div>
 					
@@ -147,9 +110,69 @@ function goWrite(){
 	
 	</div>
 	
-	
-	
 	<%@ include file="../layout/bottom.jsp"%>
+	
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	goPaging_boardList(1);
+	
+});
+
+
+function goPaging_boardList(no){
+
+	var pageNo = (no || 1);
+	$("#pageNo").val(pageNo);
+	
+	$.ajax({
+		dataType : 'json',
+		async : false,
+        url : "/cs/qnaListAjax.do",
+        type : 'POST', 
+        data : $("#fboard").serialize(), 
+        success : function(data) {
+        	var result = data.list;
+        	
+        	var page = data.page;	//페이징 변수
+        	var page_viewList = Paging(page.totalCount, 10, 10 , pageNo, "boardList");
+        	
+        	$("#qnaList").empty();	//기존 목록 지우기
+        	var str = '<tr>';
+       		$.each(result , function(i){
+       			str += '<td class="t_center">' + result[i].rownum 
+	         		 + '</td><td class="t_left"><a href="/cs/qnaView.do?seq='+ result[i].seq +'">' + result[i].title             		 
+	         		 + '</a></td><td class="t_center">' + result[i].writer
+	         		 + '</td><td class="t_center">' + result[i].writeDate                   		 
+	         		 + '</td><td class="t_center">' + result[i].hits 
+	         		 + '</td><td class="t_center">' 
+	         		 if($.trim(result[i].replyYn) == 'Y'){
+	         	str += '	<span class="bd_icon1">답변완료</span>'
+	         		 }
+			  		 else if($.trim(result[i].replyYn) == 'N'){
+			  	str +=  '	<span class="bd_icon2">답변대기</span>'
+					 }
+	         	str += '</td>'
+	         	str += '</tr>';
+            });
+       		$("#qnaList").append(str);
+       		
+       		$("#paging").empty().html(page_viewList);	//페이징 그리기
+        }, 
+
+        error : function(data) {
+        }
+    });
+}
+
+function goWrite(){
+	$("#fboard").submit();
+}
+
+
+
+</script>
+	
 </body>
 </html>
 

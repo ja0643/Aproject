@@ -5,6 +5,7 @@
 	
 	<typeAliases>
 		<typeAlias type="com.atour.cs.vo.CsVO" alias="CsVO"/>
+		<typeAlias type="com.atour.common.vo.CommonVO" alias="CommonVO"/>
 	</typeAliases>
 	
 </configuration>

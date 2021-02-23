@@ -113,11 +113,12 @@ function goWrite(){
 						</tbody>
 					</table>  
 				</c:if>
-				<div class="pull-right">
-<!-- 					<button type="submit" class="btn btn-primary">작성</button> -->
-					<button type="button" class="btn btn-primary" onclick="goWrite()">수정</button>
-					<button type="button" class="btn btn-delete" onclick="fnDelete()">삭제</button>
-					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
+				<div class="btn_wrap">	
+					<div class="pull-right">
+						<button type="button" class="btn btn-primary" onclick="goWrite()">수정</button>
+						<button type="button" class="btn btn-delete" onclick="fnDelete()">삭제</button>
+						<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
+					</div>
 				</div>
 		    	
 		    </div>

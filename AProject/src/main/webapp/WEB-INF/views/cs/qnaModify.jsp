@@ -10,11 +10,11 @@ function goList(){
 	location.href="/cs/qnaList.do";
 }
 
-function insert(){
+function update(){
 	$.ajax({
 		dataType : 'text',
 		async : false,
-        url : "/cs/qnaInsert.do",
+        url : "/cs/qnaUpdate.do",
         type : 'POST', 
         data : $("#fboard").serialize(), 
         success : function(result) {
@@ -58,7 +58,9 @@ function insert(){
 			<div class="content" id="content">
 		
 		    	<h3 class="tit_con_title">고객문의</h3>
-				<form action="/cs/qnaInsert.do" method="post" name="fboard" id="fboard">
+				<form action="/cs/qnaUpdate.do" method="post" name="fboard" id="fboard">
+				<input type="hidden" id="seq" name="seq" value="${vo.seq}" />
+				
 					<table class="table write">
 						<colgroup>
 							<col width="20%"/>
@@ -67,24 +69,22 @@ function insert(){
 						<tbody>
 							<tr>
 								<th>제목</th>
-								<td><input type="text" class="form-control" id="title" name="title" value=""/></td>
+								<td><input type="text" class="form-control" id="title" name="title" value="${vo.title}"/></td>
 							</tr>
 							<tr>
 								<th>작성자</th>
-								<td><input type="text" class="form-control" id="writer" name="writer" value="" /></td>
+								<td><input type="text" class="form-control" id="writer" name="writer" value="${vo.writer}" /></td>
 							</tr>
 							<tr style="height:150px;">
 								<th>내용</th>
-								<td><textarea name="contents" id="contents" cols="30" rows="10" class="form-control"></textarea></td>
+								<td><textarea name="contents" id="contents" cols="30" rows="10" class="form-control">${vo.contents}</textarea></td>
 							</tr>
 						</tbody>
 					</table>   
 				</form>
-				<div class="btn_wrap">	
-					<div class="pull-right">
-						<button type="button" class="btn btn-primary" onclick="insert()">작성</button>
-						<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
-					</div>
+				<div class="pull-right">
+					<button type="button" class="btn btn-primary" onclick="update()">저장</button>
+					<button type="button" class="btn btn-dark" onclick="goList()">목록</button>
 				</div>
 		    	
 		    </div>

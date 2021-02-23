@@ -1,5 +1,6 @@
 package com.atour.cs.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +10,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.atour.common.vo.CommonVO;
 import com.atour.cs.dao.CsDAO;
 import com.atour.cs.service.CsService;
 import com.atour.cs.vo.CsVO;
 import com.atour.flight.dao.FlightMainDAO;
 import com.atour.flight.service.FlightMainService;
+import com.atour.paging.PagingUtil;
 
 
 @Service("csService")
@@ -23,8 +26,36 @@ public class CsServiceImpl implements CsService{
 	private CsDAO csDAO;
 
 	@Override
-	public List<Map<String, Object>> selectNoticeList(CsVO csVO) throws Exception{
-		return csDAO.selectNoticeList(csVO);
+	public Map<String, Object> selectNoticeList(CsVO csVO, Map param) throws Exception{
+		
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		List resultList = new ArrayList();
+		
+		int totalCnt = csDAO.selectNoticeListCount(csVO); //ÃÑ °¹¼ö
+		
+		int searchNo = 10;
+		int searchCntPerPage = 10;
+		int searchUnitPage = 10;
+		
+		if(totalCnt > 0) {
+			PagingUtil.setPageInfo(param, 10);
+			
+			csVO.setFirst((Integer)param.get("first"));
+			csVO.setLast((Integer)param.get("last"));
+			
+			resultList = csDAO.selectNoticeList(csVO);
+			
+//			System.out.println("result:::::::: "+resultList);
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, searchNo, searchCntPerPage, searchUnitPage));
+			
+		}else {
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, 0));
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -40,13 +71,68 @@ public class CsServiceImpl implements CsService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectFaqList(CsVO csVO) {
-		return csDAO.selectFaqList(csVO);
+	public Map<String, Object> selectFaqList(CsVO csVO, Map param) {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		List resultList = new ArrayList();
+		
+		int totalCnt = csDAO.selectFaqListCount(csVO); //ÃÑ °¹¼ö
+		
+		int searchNo = 10;
+		int searchCntPerPage = 10;
+		int searchUnitPage = 10;
+		
+		if(totalCnt > 0) {
+			PagingUtil.setPageInfo(param, 10);
+			
+			csVO.setFirst((Integer)param.get("first"));
+			csVO.setLast((Integer)param.get("last"));
+			
+			resultList = csDAO.selectFaqList(csVO);
+			
+//			System.out.println("result:::::::: "+resultList);
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, searchNo, searchCntPerPage, searchUnitPage));
+			
+		}else {
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, 0));
+		}
+		
+		return result;
+		
 	}
 
 	@Override
-	public List<Map<String, Object>> selectQnaList(CsVO csVO) {
-		return csDAO.selectQnaList(csVO);
+	public Map<String, Object> selectQnaList(CsVO csVO, Map param) {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		List resultList = new ArrayList();
+
+		int totalCnt = csDAO.selectQnaListCount(csVO); //ÃÑ °¹¼ö
+
+		int searchNo = 10;
+		int searchCntPerPage = 10;
+		int searchUnitPage = 10;
+		
+		if(totalCnt > 0) {
+			PagingUtil.setPageInfo(param, 10);
+			
+			csVO.setFirst((Integer)param.get("first"));
+			csVO.setLast((Integer)param.get("last"));
+			
+			resultList = csDAO.selectQnaList(csVO);
+			
+//			System.out.println("result:::::::: "+resultList);
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, searchNo, searchCntPerPage, searchUnitPage));
+			
+		}else {
+			result.put("result", resultList);
+			result.put("page", PagingUtil.getPageObject(totalCnt, 0));
+		}
+		
+		return result;
 	}
 
 	@Override
