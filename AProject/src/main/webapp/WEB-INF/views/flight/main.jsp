@@ -32,13 +32,23 @@
 		                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
 		                        	<label for="inputCity" class="tit">여행지</label>
 		                        	<div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-1"> 
-			                            <input name="start_place" type="text" class="form-control" id="start_place" placeholder="출발지">
+<!-- 			                            <input name="start_place" type="text" class="form-control" id="start_place" placeholder="출발지"> -->
+			                            <select name="start_place" id="start_place" class="form-control tm-select" >
+			                            	<c:forEach var="list" items="${result}">
+			                            		<option value="${list.airportId}">${list.airportNm}</option>
+			                            	</c:forEach>
+			                            </select>
 		                            </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-2"> 
 		                             ~ 
 		                             </div>
 		                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2-1"> 
-		                           	 <input name="end_place" type="text" class="form-control" id="end_place" placeholder="도착지">
+<!-- 		                           	 <input name="end_place" type="text" class="form-control" id="end_place" placeholder="도착지"> -->
+										<select name="end_place" id="end_place" class="form-control tm-select" >
+			                            	<c:forEach var="list" items="${result}">
+			                            		<option value="${list.airportId}">${list.airportNm}</option>
+			                            	</c:forEach>
+			                            </select>
 		                            </div>
 		                        </div>
 		                        <div class="form-group tm-form-group tm-form-group-1">                                    

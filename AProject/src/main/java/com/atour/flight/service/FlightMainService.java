@@ -7,5 +7,7 @@ public interface FlightMainService {
 
 	List<Map<String, Object>> selectTestList(Map<String, Object> commandMap) throws Exception;
 
+	Map<String, Object> flightList() throws Exception;
+
 
 }
